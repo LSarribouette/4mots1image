@@ -1,13 +1,63 @@
+@font-face {
+  src: url(./fonts/Luciole-Regular.ttf);
+  font-family: "Luciole-Regular";
+}
+
+@font-face {
+  src: url(./fonts/Luciole-Bold.ttf);
+  font-family: "Luciole-Bold";
+}
+
+/** GENERAL **/
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: Luciole-Regular, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/** HOME **/
+/* navbar */ 
+.nav-home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
 }
+
+  .nav-home .logo-home,
+  .button-big-play {
+    align-self: center;
+  }
+
+  .nav-home .image-home {
+    margin: 40px 0;
+    max-width: min-content;
+  }
+
+  .nav-home .button-big-play {
+    font-size: 2em;
+  }
+
+/** PLAYING **/
+.nav-playing {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+
+  height: min-content;
+}
+
+  .nav-playing .logo-playing {
+    max-height: 5em;
+    margin: .5em;
+    padding: 0;
+  }
+
+  .nav-playing .logo-playing:hover {
+    cursor: pointer;
+  }
