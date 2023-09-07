@@ -1,13 +1,5 @@
-import { useState } from "react";
+export default function Navbar({ isPlaying, letsPlay, goBackHome }) {
 
-export default function Navbar() {
-    const [isPlaying, setIsPlaying] = useState(false)
-    const letsPlay = () => {
-        setIsPlaying(true)
-    }
-    const goBackHome = () => {
-        setIsPlaying(false)
-    }
 
     return (
         <nav className={`nav-${isPlaying ? "playing" : "home"}`}>
@@ -19,7 +11,7 @@ export default function Navbar() {
             />
             {isPlaying ? 
                 null : 
-                <button className={`button-big-play warning`} onClick={letsPlay}>
+                <button className="button-big-play warning" onClick={letsPlay}>
                     Jouer
                 </button>
             }

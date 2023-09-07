@@ -43,6 +43,7 @@ body {
   }
 
 /** PLAYING **/
+/* navbar */
 .nav-playing {
   display: flex;
   flex-direction: row;
@@ -61,3 +62,23 @@ body {
   .nav-playing .logo-playing:hover {
     cursor: pointer;
   }
+
+/* game */
+.game {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.game .question-image {
+  padding: 150px 0 0 0;
+  margin: .5em;
+  text-align: center;
+}
+
+.game .answers {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
