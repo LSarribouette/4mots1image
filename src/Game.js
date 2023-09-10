@@ -73,19 +73,18 @@ export default function Game({ isPlaying }) {
                         <div className='answers'>
                             {choices.map((answer, index) => (
                                 <button
+                                    className="answer warning"
                                     onClick={() => onAnswerSelected(answer)}
                                     key={answer}>
                                     {answer}
                                 </button>
                             ))}
-                        </div>
-                        <div className="flex-right">
                             {!answeredQuestion ? (
-                                <button onClick={() => onCheckAnswer(selectedAnswer)} disabled={selectedAnswer.length === 0}>
+                                <button className="ok-next" onClick={() => onCheckAnswer(selectedAnswer)} disabled={selectedAnswer.length === 0}>
                                     OK
                                 </button>
                             ) : (
-                                <button onClick={onClickNext}>
+                                <button className="ok-next" onClick={onClickNext}>
                                     Suivant
                                 </button>
                             )}
@@ -95,7 +94,7 @@ export default function Game({ isPlaying }) {
             )
         } else if (showResults === true) {
             return (
-                <div>
+                <div className='results'>
                     {goodAnswers > 0 ? (
                         <div>
                             <h2>Bien joué !</h2>
@@ -107,11 +106,9 @@ export default function Game({ isPlaying }) {
                             <p>Tu n'as eu aucune bonne réponse sur {totalQuestions} questions.</p>
                         </div>
                     )}
-                    <div className="flex-right">
-                        <button onClick={onPlayAgain}>
-                            Rejouer
-                        </button>
-                    </div>
+                    <button onClick={onPlayAgain}>
+                        Rejouer
+                    </button>
                 </div>
             )
         }
