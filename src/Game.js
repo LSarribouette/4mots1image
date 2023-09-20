@@ -24,7 +24,6 @@ export default function Game({ isPlaying }) {
 
     //fonction pour la verification de la réponse
     const onCheckAnswer = (answer) => {
-        console.log(answer);
         setActiveAnswer(answer);
         if (answer === rightAnswer) {
             console.log("animation FIREWORKS");
@@ -34,7 +33,6 @@ export default function Game({ isPlaying }) {
             console.log("animation EARTHQUAKES");
             setColoredAnswer('red-button');
         }
-        console.log(goodAnswers);
         setAnsweredQuestion(true);
     }
 
@@ -53,7 +51,11 @@ export default function Game({ isPlaying }) {
 
     //fonction pour rejouer
     const onPlayAgain = () => {
-        //on reintialise tout
+        reinitializeAll();
+    }
+
+    //fonction pour reinitialiser les variables d'etat
+    const reinitializeAll = () => {
         setShowResults(false);
         setGoodAnswers(0);
         setActiveQuestion(0);
