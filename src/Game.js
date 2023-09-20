@@ -15,7 +15,7 @@ export default function Game({ isPlaying }) {
     //data
     const { questions } = data;
     const totalQuestions = questions.length;
-    const { rightAnswer, choices } = questions[activeQuestion];
+    const { rightAnswer, url, choices } = questions[activeQuestion];
 
     //fonction pour la selection d'une reponse
     const onAnswerSelected = (answer) => {
@@ -73,14 +73,16 @@ export default function Game({ isPlaying }) {
                 <div>
                     <div className="game">
                         <div className='question-image'>
-                            <span className="active-question-no">{activeQuestion + 1}</span>
-                            <span className="total-question">/{totalQuestions}</span>
-                            <div>{rightAnswer}</div>
+                            <div>
+                                <span className="active-question-no">{activeQuestion + 1}</span>
+                                <span className="total-question">/{totalQuestions}</span>
+                            </div>
+                            <img src={url}></img>
                         </div>
                         <div className='answers'>
                             {choices.map((answer, index) => (
                                 <button
-                                    className={`answer ${answer == activeAnswer ? coloredAnswer : 'warning'}`} 
+                                    className={`answer ${answer == activeAnswer ? coloredAnswer : 'warning'}`}
                                     onClick={() => onAnswerSelected(answer)}
                                     disabled={answeredQuestion}
                                     key={answer}>
