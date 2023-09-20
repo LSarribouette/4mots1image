@@ -19,7 +19,7 @@ body {
 }
 
 /** HOME **/
-/* navbar */ 
+/* navbar */
 .nav-home {
   min-height: 100vh;
   display: flex;
@@ -28,19 +28,19 @@ body {
   justify-content: center;
 }
 
-  .nav-home .logo-home,
-  .button-big-play {
-    align-self: center;
-  }
+.nav-home .logo-home,
+.button-big-play {
+  align-self: center;
+}
 
-  .nav-home .image-home {
-    margin: 40px 0;
-    max-width: min-content;
-  }
+.nav-home .image-home {
+  margin: 40px 0;
+  max-width: min-content;
+}
 
-  .nav-home .button-big-play {
-    font-size: 2em;
-  }
+.nav-home .button-big-play {
+  font-size: 2em;
+}
 
 /** PLAYING **/
 /* navbar */
@@ -54,12 +54,12 @@ body {
   position: absolute;
 }
 
-  .nav-playing .logo-playing {
-    max-height: 5em;
-    margin: .5em;
-    padding: 0;
-    cursor: pointer;
-  }
+.nav-playing .logo-playing {
+  max-height: 5em;
+  margin: .5em;
+  padding: 0;
+  cursor: pointer;
+}
 
 /* game */
 .game {
@@ -87,8 +87,17 @@ body {
 .game .answers .answer {
   font-size: 2em;
 }
+
 .game .answers .ok-next {
   margin-top: 2em;
   align-self: center;
   font-size: 1.5em;
+}
+
+.game .answers .green-button:disabled {
+  background-color: #2ecc40;
+}
+
+.game .answers .red-button:disabled {
+  background-color: #ff4136;
 }

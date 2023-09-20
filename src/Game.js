@@ -7,6 +7,8 @@ export default function Game({ isPlaying }) {
     const [activeQuestion, setActiveQuestion] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState('');
     const [answeredQuestion, setAnsweredQuestion] = useState(false);
+    const [activeAnswer, setActiveAnswer] = useState('');
+    const [coloredAnswer, setColoredAnswer] = useState('');
     const [showResults, setShowResults] = useState(false);
     const [goodAnswers, setGoodAnswers] = useState(0);
 
@@ -23,11 +25,14 @@ export default function Game({ isPlaying }) {
     //fonction pour la verification de la réponse
     const onCheckAnswer = (answer) => {
         console.log(answer);
+        setActiveAnswer(answer);
         if (answer === rightAnswer) {
             console.log("animation FIREWORKS");
             setGoodAnswers((goodAnswers) => goodAnswers + 1);
+            setColoredAnswer('green-button');
         } else {
             console.log("animation EARTHQUAKES");
+            setColoredAnswer('red-button');
         }
         console.log(goodAnswers);
         setAnsweredQuestion(true);
@@ -40,6 +45,7 @@ export default function Game({ isPlaying }) {
             //on reinitialise
             setAnsweredQuestion(false);
             setSelectedAnswer('');
+            setActiveAnswer('');
         } else {
             setShowResults(true);
         }
@@ -53,6 +59,7 @@ export default function Game({ isPlaying }) {
         setActiveQuestion(0);
         setAnsweredQuestion(false);
         setSelectedAnswer('');
+        setActiveAnswer('');
     }
 
     if (isPlaying === false) {
@@ -73,8 +80,9 @@ export default function Game({ isPlaying }) {
                         <div className='answers'>
                             {choices.map((answer, index) => (
                                 <button
-                                    className="answer warning"
+                                    className={`answer ${answer == activeAnswer ? coloredAnswer : 'warning'}`} 
                                     onClick={() => onAnswerSelected(answer)}
+                                    disabled={answeredQuestion}
                                     key={answer}>
                                     {answer}
                                 </button>
