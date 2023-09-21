@@ -3,7 +3,6 @@ import { useState } from "react";
 
 
 export default function Game({ isPlaying }) {
-    //variables d'etat
     const [activeQuestion, setActiveQuestion] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState('');
     const [answeredQuestion, setAnsweredQuestion] = useState(false);
@@ -64,65 +63,65 @@ export default function Game({ isPlaying }) {
         setActiveAnswer('');
     }
 
-    if (isPlaying === false) {
-        // on ne joue pas
+    // on ne joue pas
+    if (!isPlaying) {
         return null;
+    }
 
-    } else if (isPlaying === true) {
-        // on joue
-        if (showResults === false) {
-            return (
-                <div>
-                    <div className="game">
-                        <div className='question-image'>
-                            <div>
-                                <span className="active-question-no">{activeQuestion + 1}</span>
-                                <span className="total-question">/{totalQuestions}</span>
-                            </div>
-                            <img src={url}></img>
+    // on joue
+    if (!showResults) {
+        return (
+            <div>
+                <div className="game">
+                    <div className='question-image'>
+                        <div>
+                            <span className="active-question-no">{activeQuestion + 1}</span>
+                            <span className="total-question">/{totalQuestions}</span>
                         </div>
-                        <div className='answers'>
-                            {choices.map((answer, index) => (
-                                <button
-                                    className={`answer ${answer == activeAnswer ? coloredAnswer : 'warning'}`}
-                                    onClick={() => onAnswerSelected(answer)}
-                                    disabled={answeredQuestion}
-                                    key={answer}>
-                                    {answer}
-                                </button>
-                            ))}
-                            {!answeredQuestion ? (
-                                <button className="ok-next" onClick={() => onCheckAnswer(selectedAnswer)} disabled={selectedAnswer.length === 0}>
-                                    OK
-                                </button>
-                            ) : (
-                                <button className="ok-next" onClick={onClickNext}>
-                                    Suivant
-                                </button>
-                            )}
-                        </div>
+                        <img src={url}></img>
+                    </div>
+                    <div className='answers'>
+                        {choices.map((answer, index) => (
+                            <button
+                                className={`answer ${answer == activeAnswer ? coloredAnswer : 'warning'}`}
+                                onClick={() => onAnswerSelected(answer)}
+                                disabled={answeredQuestion}
+                                key={answer}>
+                                {answer}
+                            </button>
+                        ))}
+                        {!answeredQuestion ? (
+                            <button className="ok-next" onClick={() => onCheckAnswer(selectedAnswer)} disabled={selectedAnswer.length === 0}>
+                                OK
+                            </button>
+                        ) : (
+                            <button className="ok-next" onClick={onClickNext}>
+                                Suivant
+                            </button>
+                        )}
                     </div>
                 </div>
-            )
-        } else if (showResults === true) {
-            return (
-                <div className='results'>
-                    {goodAnswers > 0 ? (
-                        <div>
-                            <h2>Bien joué !</h2>
-                            <p>Tu as eu {goodAnswers} {goodAnswers <= 1 ? 'bonne réponse' : 'bonnes réponses'} sur {totalQuestions} questions.</p>
-                        </div>
-                    ) : (
-                        <div>
-                            <h2>Dommage !</h2>
-                            <p>Tu n'as eu aucune bonne réponse sur {totalQuestions} questions.</p>
-                        </div>
-                    )}
-                    <button onClick={onPlayAgain}>
-                        Rejouer
-                    </button>
-                </div>
-            )
-        }
+            </div>
+        )
     }
+
+    //on montre les resultats
+    return (
+        <div className='results'>
+            {goodAnswers > 0 ? (
+                <div>
+                    <h2>Bien joué !</h2>
+                    <p>Tu as eu {goodAnswers} {goodAnswers <= 1 ? 'bonne réponse' : 'bonnes réponses'} sur {totalQuestions} questions.</p>
+                </div>
+            ) : (
+                <div>
+                    <h2>Dommage !</h2>
+                    <p>Tu n'as eu aucune bonne réponse sur {totalQuestions} questions.</p>
+                </div>
+            )}
+            <button onClick={onPlayAgain}>
+                Rejouer
+            </button>
+        </div>
+    )
 }
